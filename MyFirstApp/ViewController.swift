@@ -21,5 +21,8 @@ class ViewController: UIViewController {
 
 
     @IBOutlet weak var outputLabel: UILabel!
+    @IBAction func shuffleButton(_ sender: Any) {
+        outputLabel.text = "Hung on."
+    }
 }
 
