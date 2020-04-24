@@ -21,23 +21,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="064-gI-aa0">
-                                <rect key="frame" x="0.0" y="848" width="414" height="48"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="shuffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zTh-pI-zmR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="064-gI-aa0" secondAttribute="trailing" id="d2P-kT-BsO"/>
-                            <constraint firstItem="064-gI-aa0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m2T-NG-cUK"/>
-                            <constraint firstAttribute="bottom" secondItem="064-gI-aa0" secondAttribute="bottom" id="obL-Jd-8fB"/>
                             <constraint firstItem="3iV-ha-hJ3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xkg-fO-gju"/>
                             <constraint firstItem="3iV-ha-hJ3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yyt-Mu-Tkb"/>
                         </constraints>
