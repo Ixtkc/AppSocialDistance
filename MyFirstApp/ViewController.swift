@@ -89,9 +89,10 @@ extension ViewController: CBCentralManagerDelegate{
     ///
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
-
+        print("Called")
         let array_tmp = [String(describing: peripheral.name)]
         array_master = array_master.addUnique(array_tmp)
+        outputLabel.text = String(array_master.count)
     }
 }
 
