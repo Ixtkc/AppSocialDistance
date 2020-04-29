@@ -91,8 +91,11 @@ extension ViewController: CBCentralManagerDelegate{
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
         print("Called")
         let array_tmp = [String(describing: peripheral.name)]
+        // let array_tmp = [String(describing: peripheral.identifier.uuid)]
+        // 下側にすると, デバイス名のない機器のUUIDを取得できる. 車のBluetoothな気がするので、アパートの中にいながら交通量を調べるのに便利.
         array_master = array_master.addUnique(array_tmp)
         outputLabel.text = String(array_master.count)
+        print(array_tmp)
     }
 }
 
