@@ -15,19 +15,16 @@ import CoreBluetooth
 
 
 extension Array where Element: Hashable {
-    
     func addUnique(_ array: Array) -> Array {
         let dict = Dictionary(map{ ($0, 1) }, uniquingKeysWith: +)
         return self + array.filter{ dict[$0] == nil }
     }
 }
 
-
 class ViewController: UIViewController {
-    
     var peripherals = [UUID : CBPeripheral]()
     var centralManager: CBCentralManager!
-    var array_master: [String] = []
+    var array_master: [String] = [] // 接触したデバイス名を保存
     let button = UIButton()
 
     override func viewDidLoad() {
@@ -49,6 +46,13 @@ class ViewController: UIViewController {
         
         // UIボタンをViewに追加.
         self.view.addSubview(button);
+        
+        
+        // userdefaultから値を取得
+        if UserDefaults.standard.object(forKey: "contactDic") != nil {
+            array_master = UserDefaults.standard.object(forKey: "contasctDic") as! [String];
+            print(array_master)
+        }
     }
 
     @IBOutlet weak var outputLabel: UILabel!
@@ -96,6 +100,9 @@ extension ViewController: CBCentralManagerDelegate{
         array_master = array_master.addUnique(array_tmp)
         outputLabel.text = String(array_master.count)
         print(array_tmp)
+        
+        // userdefaults に保存
+        UserDefaults.standard.set(array_master, forKey: "contsctArray")
     }
 }
 
