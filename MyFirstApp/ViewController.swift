@@ -24,43 +24,59 @@ extension Array where Element: Hashable {
 class ViewController: UIViewController {
     var peripherals = [UUID : CBPeripheral]()
     var centralManager: CBCentralManager!
-    var array_master: [String] = [] // 接触したデバイス名を保存
-    let button = UIButton()
+    var deviceArray: [String] = [] // 接触したデバイス名を保存
+//    let button = UIButton()
+    
+    var timer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        outputLabel.text = String(array_master.count)
-        
-        // サイズ
-        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-        button.backgroundColor = UIColor.darkGray
-        button.layer.masksToBounds = true
-        button.setTitle("Search", for: UIControl.State.normal)
-        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        button.layer.cornerRadius = 20.0
-        button.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
-        button.tag = 1
-        button.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
-        
-        // UIボタンをViewに追加.
-        self.view.addSubview(button);
+//        // サイズ
+//        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+//        button.backgroundColor = UIColor.darkGray
+//        button.layer.masksToBounds = true
+//        button.setTitle("Search", for: UIControl.State.normal)
+//        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+//        button.layer.cornerRadius = 20.0
+//        button.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
+//        button.tag = 1
+//        button.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+//
+//        // UIボタンをViewに追加.
+//        self.view.addSubview(button);
         
         
         // userdefaultから値を取得
-        if UserDefaults.standard.object(forKey: "contactDic") != nil {
-            array_master = UserDefaults.standard.object(forKey: "contasctDic") as! [String];
-            print(array_master)
+        if UserDefaults.standard.object(forKey: "deviceArray") != nil {
+            deviceArray = UserDefaults.standard.object(forKey: "deviceArray") as! [String];
         }
+        
+        // 検出数を表示
+        outputLabel.text = String(deviceArray.count)
+        
+        // 10秒ごとに検出
+        createTimer()
     }
 
     @IBOutlet weak var outputLabel: UILabel!
     
     /// ボタンが押されたときに呼び出される。
-    @objc func onClickMyButton(sender: UIButton){
-        // CoreBluetoothを初期化および始動.
+//    @objc func onClickMyButton(sender: UIButton){
+//        // CoreBluetoothを初期化および始動.
+//        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+//    }
+    
+    // 10秒ごとに周辺のデバイスを検出
+    func createTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.detectDevices(timer:)), userInfo: nil, repeats: true)
+        print("createTimer")
+    }
+    
+    // デバイスを検出
+    @objc func detectDevices(timer: Timer) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        print("detectiveDevice")
     }
     
 }
@@ -95,14 +111,13 @@ extension ViewController: CBCentralManagerDelegate{
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
         print("Called")
         let array_tmp = [String(describing: peripheral.name)]
-        // let array_tmp = [String(describing: peripheral.identifier.uuid)]
-        // 下側にすると, デバイス名のない機器のUUIDを取得できる. 車のBluetoothな気がするので、アパートの中にいながら交通量を調べるのに便利.
-        array_master = array_master.addUnique(array_tmp)
-        outputLabel.text = String(array_master.count)
-        print(array_tmp)
+        // let array_tmp = [String(describing: peripheral.identifier.uuid)] // デバイス名のない機器を検出
+        
+        deviceArray = deviceArray.addUnique(array_tmp)
+        outputLabel.text = String(deviceArray.count)
         
         // userdefaults に保存
-        UserDefaults.standard.set(array_master, forKey: "contsctArray")
+        UserDefaults.standard.set(deviceArray, forKey: "deviceArray")
     }
 }
 
