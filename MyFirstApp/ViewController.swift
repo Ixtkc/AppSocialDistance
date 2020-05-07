@@ -13,7 +13,6 @@
 import UIKit
 import CoreBluetooth
 
-
 extension Array where Element: Hashable {
     func addUnique(_ array: Array) -> Array {
         let dict = Dictionary(map{ ($0, 1) }, uniquingKeysWith: +)
@@ -22,29 +21,31 @@ extension Array where Element: Hashable {
 }
 
 class ViewController: UIViewController {
+    @IBOutlet weak var outputLabel: UILabel!
+    
     var peripherals = [UUID : CBPeripheral]()
     var centralManager: CBCentralManager!
     var deviceArray: [String] = [] // 接触したデバイス名を保存
-//    let button = UIButton()
     
     var timer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // サイズ
-//        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-//        button.backgroundColor = UIColor.darkGray
-//        button.layer.masksToBounds = true
-//        button.setTitle("Search", for: UIControl.State.normal)
-//        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-//        button.layer.cornerRadius = 20.0
-//        button.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
-//        button.tag = 1
-//        button.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
-//
-//        // UIボタンをViewに追加.
-//        self.view.addSubview(button);
+        //角丸設定
+        self.outputLabel.layer.cornerRadius = 12
+        self.outputLabel.clipsToBounds = true
+        
+        //影の設定
+        self.outputLabel.layer.shadowOpacity = 0.4
+        self.outputLabel.layer.shadowRadius = 12
+        self.outputLabel.layer.shadowColor = UIColor.black.cgColor
+        self.outputLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
+        
+        //色の設定
+        _ = UIColor(red: 224/255.0, green: 98/255.0, blue: 106/255.0, alpha: 1.0)
+        _ = UIColor(red: 242/255.0, green: 164/255.0, blue: 58/255.0, alpha: 1.0)
+        _ = UIColor(red: 98/255.0, green: 186/255.0, blue: 224/255.0, alpha: 1.0)
         
         
         // userdefaultから値を取得
@@ -58,18 +59,34 @@ class ViewController: UIViewController {
         // 10秒ごとに検出
         createTimer()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UserDefaults.standard.set(true, forKey: "firstLaunch")
+        // 初回起動時の処理
+        if (UserDefaults.standard.bool(forKey: "firstLaunch")) {
+            openModal()
+            UserDefaults.standard.set(false, forKey: "firstLaunch")
+        }
+    }
+    
+    func openModal() {
+        print("modal")
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-    @IBOutlet weak var outputLabel: UILabel!
+        let modal: ModalViewController = storyBoard.instantiateViewController(withIdentifier: "modal") as! ModalViewController
+        modal.modalPresentationStyle = .overFullScreen
+        modal.modalTransitionStyle = .crossDissolve
+
+        self.present(modal, animated: false, completion: nil)
+    }
     
-    /// ボタンが押されたときに呼び出される。
-//    @objc func onClickMyButton(sender: UIButton){
-//        // CoreBluetoothを初期化および始動.
-//        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
-//    }
-    
-    // 10秒ごとに周辺のデバイスを検出
+    // 1秒ごとに周辺のデバイスを検出
     func createTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.detectDevices(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.detectDevices(timer:)), userInfo: nil, repeats: true)
         print("createTimer")
     }
     
@@ -78,7 +95,6 @@ class ViewController: UIViewController {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
         print("detectiveDevice")
     }
-    
 }
 
 extension ViewController: CBCentralManagerDelegate{
