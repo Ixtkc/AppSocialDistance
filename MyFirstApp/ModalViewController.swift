@@ -9,11 +9,20 @@
 import UIKit
 
 class ModalViewController: UIViewController {
+    @IBOutlet var closeBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //角丸設定
+        self.closeBtn.layer.cornerRadius = 12
+        self.closeBtn.clipsToBounds = true
+        
+        //影の設定
+        self.closeBtn.layer.shadowOpacity = 0.4
+        self.closeBtn.layer.shadowRadius = 12
+        self.closeBtn.layer.shadowColor = UIColor.black.cgColor
+        self.closeBtn.layer.shadowOffset = CGSize(width: 3, height: 3)
     }
     
     // 閉じるボタンがタップされた時

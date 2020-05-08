@@ -86,6 +86,7 @@ class ViewController: UIViewController {
         outputLabel.text = String(deviceArray.count)
         
         // グラフを表示
+//        graphSetup(barChartView: chartView, data: [4, 5, 6, 3, 2, 5, 9])
         graphSetup(barChartView: chartView, data: weekCounts)
         
         // 10秒ごとに検出
@@ -121,6 +122,14 @@ class ViewController: UIViewController {
         let entries = data.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
         let dataSet = BarChartDataSet(entries: entries)
         let data = BarChartData(dataSet: dataSet)
+        
+        // 軸の線、グリッドを非表示
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.drawAxisLineEnabled = false
+        // Y座標軸は非表示
+        barChartView.rightAxis.enabled = false
+        barChartView.leftAxis.enabled = false
+        
         barChartView.data = data
     }
     
