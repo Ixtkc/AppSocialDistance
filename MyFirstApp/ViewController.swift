@@ -13,6 +13,8 @@
 import UIKit
 import CoreBluetooth
 
+import Charts
+
 extension Array where Element: Hashable {
     func addUnique(_ array: Array) -> Array {
         let dict = Dictionary(map{ ($0, 1) }, uniquingKeysWith: +)
@@ -22,12 +24,17 @@ extension Array where Element: Hashable {
 
 class ViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet var chartView: BarChartView!
     
     var peripherals = [UUID : CBPeripheral]()
     var centralManager: CBCentralManager!
     var deviceArray: [String] = [] // 接触したデバイス名を保存
     
     var timer: Timer!
+    var todayDate: String!
+    var weekCounts: [Int] = [0, 0, 0, 0, 0, 0, 0] // 1週間の記録
+    
+    var alertController: UIAlertController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +54,39 @@ class ViewController: UIViewController {
         _ = UIColor(red: 242/255.0, green: 164/255.0, blue: 58/255.0, alpha: 1.0)
         _ = UIColor(red: 98/255.0, green: 186/255.0, blue: 224/255.0, alpha: 1.0)
         
+        // dateformatter
+        let dateFormater = DateFormatter()
+        dateFormater.locale = Locale(identifier: "ja_JP")
+        dateFormater.dateFormat = "yyyy/MM/dd"
+        
+        // 今日の日付を取得
+        // userdefaultのキーに使う
+        todayDate = dateFormater.string(from: Date())
         
         // userdefaultから値を取得
-        if UserDefaults.standard.object(forKey: "deviceArray") != nil {
-            deviceArray = UserDefaults.standard.object(forKey: "deviceArray") as! [String];
+        if UserDefaults.standard.object(forKey: todayDate) != nil {
+            deviceArray = UserDefaults.standard.object(forKey: todayDate) as! [String]
+        }
+        
+        // 1週間の記録を取得
+        for i in 1...7 {
+            let today = Date()
+            let dayBeforeDate = Calendar.current.date(byAdding: .day, value: -i, to: today)!
+            let dayBeforeStr = dateFormater.string(from: dayBeforeDate)
+            
+            if UserDefaults.standard.object(forKey: dayBeforeStr) != nil {
+                let array = UserDefaults.standard.object(forKey: dayBeforeStr) as! [Int]
+                weekCounts[i-1] = array.count
+            } else {
+                weekCounts[i-1] = 0
+            }
         }
         
         // 検出数を表示
         outputLabel.text = String(deviceArray.count)
+        
+        // グラフを表示
+        graphSetup(barChartView: chartView, data: weekCounts)
         
         // 10秒ごとに検出
         createTimer()
@@ -70,6 +102,7 @@ class ViewController: UIViewController {
             openModal()
             UserDefaults.standard.set(false, forKey: "firstLaunch")
         }
+        
     }
     
     func openModal() {
@@ -84,6 +117,13 @@ class ViewController: UIViewController {
         self.present(modal, animated: false, completion: nil)
     }
     
+    func graphSetup(barChartView: BarChartView, data: [Int]) {
+        let entries = data.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+        let dataSet = BarChartDataSet(entries: entries)
+        let data = BarChartData(dataSet: dataSet)
+        barChartView.data = data
+    }
+    
     // 1秒ごとに周辺のデバイスを検出
     func createTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.detectDevices(timer:)), userInfo: nil, repeats: true)
@@ -93,7 +133,7 @@ class ViewController: UIViewController {
     // デバイスを検出
     @objc func detectDevices(timer: Timer) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
-        print("detectiveDevice")
+        centralManager.scanForPeripherals(withServices: nil)
     }
 }
 
@@ -107,7 +147,7 @@ extension ViewController: CBCentralManagerDelegate{
         case .poweredOn:
             print("Bluetoothの電源はOn")
             // BLEデバイスの検出を開始.
-            centralManager.scanForPeripherals(withServices: nil)
+             centralManager.scanForPeripherals(withServices: nil)
         case .resetting:
             print("レスティング状態")
         case .unauthorized:
@@ -133,7 +173,7 @@ extension ViewController: CBCentralManagerDelegate{
         outputLabel.text = String(deviceArray.count)
         
         // userdefaults に保存
-        UserDefaults.standard.set(deviceArray, forKey: "deviceArray")
+        UserDefaults.standard.set(deviceArray, forKey: todayDate)
     }
 }
 

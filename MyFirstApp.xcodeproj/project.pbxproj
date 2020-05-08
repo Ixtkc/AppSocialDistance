@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16E13CE024658C60004BF22C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CDC24658BC5004BF22C /* Charts.framework */; };
+		16E13CE124658C60004BF22C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CDC24658BC5004BF22C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16F2FB2D2463FC8700A7B770 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F2FB2C2463FC8700A7B770 /* ModalViewController.swift */; };
 		E90ECF59244F0E71008FE0F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90ECF58244F0E71008FE0F1 /* AppDelegate.swift */; };
 		E90ECF5B244F0E71008FE0F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90ECF5A244F0E71008FE0F1 /* SceneDelegate.swift */; };
@@ -16,7 +18,39 @@
 		E90ECF65244F0E73008FE0F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90ECF63244F0E73008FE0F1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		16E13CDB24658BC5004BF22C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E13CD624658BC5004BF22C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		16E13CDD24658BC5004BF22C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E13CD624658BC5004BF22C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		16E13CE224658C60004BF22C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				16E13CE124658C60004BF22C /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		16E13CD624658BC5004BF22C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		16F2FB2C2463FC8700A7B770 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E90ECF55244F0E71008FE0F1 /* MyFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90ECF58244F0E71008FE0F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +67,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E13CE024658C60004BF22C /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16E13CD724658BC5004BF22C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16E13CDC24658BC5004BF22C /* Charts.framework */,
+				16E13CDE24658BC5004BF22C /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16E13CDF24658C60004BF22C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E90ECF4C244F0E70008FE0F1 = {
 			isa = PBXGroup;
 			children = (
 				E90ECF57244F0E71008FE0F1 /* MyFirstApp */,
 				E90ECF56244F0E71008FE0F1 /* Products */,
+				16E13CD624658BC5004BF22C /* Charts.xcodeproj */,
+				16E13CDF24658C60004BF22C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +133,7 @@
 				E90ECF51244F0E70008FE0F1 /* Sources */,
 				E90ECF52244F0E70008FE0F1 /* Frameworks */,
 				E90ECF53244F0E70008FE0F1 /* Resources */,
+				16E13CE224658C60004BF22C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,12 +170,35 @@
 			mainGroup = E90ECF4C244F0E70008FE0F1;
 			productRefGroup = E90ECF56244F0E71008FE0F1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 16E13CD724658BC5004BF22C /* Products */;
+					ProjectRef = 16E13CD624658BC5004BF22C /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E90ECF54244F0E70008FE0F1 /* MyFirstApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		16E13CDC24658BC5004BF22C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 16E13CDB24658BC5004BF22C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16E13CDE24658BC5004BF22C /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 16E13CDD24658BC5004BF22C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E90ECF53244F0E70008FE0F1 /* Resources */ = {
