@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     var deviceArray: [String] = [] // 接触したデバイス名を保存
     
     var timer: Timer!
+    let dateFormater = DateFormatter()
     var todayDate: String!
     var weekCounts: [Int] = [0, 0, 0, 0, 0, 0, 0] // 1週間の記録
     
@@ -54,8 +55,7 @@ class ViewController: UIViewController {
         _ = UIColor(red: 242/255.0, green: 164/255.0, blue: 58/255.0, alpha: 1.0)
         _ = UIColor(red: 98/255.0, green: 186/255.0, blue: 224/255.0, alpha: 1.0)
         
-        // dateformatter
-        let dateFormater = DateFormatter()
+        // dateformatterのsetting
         dateFormater.locale = Locale(identifier: "ja_JP")
         dateFormater.dateFormat = "yyyy/MM/dd"
         
@@ -69,25 +69,13 @@ class ViewController: UIViewController {
         }
         
         // 1週間の記録を取得
-        for i in 1...7 {
-            let today = Date()
-            let dayBeforeDate = Calendar.current.date(byAdding: .day, value: -i, to: today)!
-            let dayBeforeStr = dateFormater.string(from: dayBeforeDate)
-            
-            if UserDefaults.standard.object(forKey: dayBeforeStr) != nil {
-                let array = UserDefaults.standard.object(forKey: dayBeforeStr) as! [Int]
-                weekCounts[i-1] = array.count
-            } else {
-                weekCounts[i-1] = 0
-            }
-        }
+        getWeekData(dateFormater: self.dateFormater)
         
         // 検出数を表示
         outputLabel.text = String(deviceArray.count)
         
         // グラフを表示
-//        graphSetup(barChartView: chartView, data: [4, 5, 6, 3, 2, 5, 9])
-        graphSetup(barChartView: chartView, data: weekCounts)
+        graphSetup(barChartView: chartView, data: weekCounts.reversed())
         
         // 10秒ごとに検出
         createTimer()
@@ -107,8 +95,6 @@ class ViewController: UIViewController {
     }
     
     func openModal() {
-        print("modal")
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
         let modal: ModalViewController = storyBoard.instantiateViewController(withIdentifier: "modal") as! ModalViewController
@@ -133,16 +119,35 @@ class ViewController: UIViewController {
         barChartView.data = data
     }
     
+    func getWeekData(dateFormater: DateFormatter) {
+        for i in 0...6 {
+            let today = Date()
+            let dayBeforeDate = Calendar.current.date(byAdding: .day, value: -i, to: today)!
+            let dayBeforeStr = dateFormater.string(from: dayBeforeDate)
+            
+            if UserDefaults.standard.object(forKey: dayBeforeStr) != nil {
+                let array = UserDefaults.standard.object(forKey: dayBeforeStr) as! [String]
+                self.weekCounts[i] = array.count
+            } else {
+                self.weekCounts[i] = 0
+            }
+        }
+    }
+    
     // 1秒ごとに周辺のデバイスを検出
     func createTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.detectDevices(timer:)), userInfo: nil, repeats: true)
-        print("createTimer")
     }
     
     // デバイスを検出
     @objc func detectDevices(timer: Timer) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
         centralManager.scanForPeripherals(withServices: nil)
+    }
+    
+    @IBAction func updateGraphBtn() {
+        getWeekData(dateFormater: self.dateFormater)
+        graphSetup(barChartView: self.chartView, data: self.weekCounts.reversed())
     }
 }
 
@@ -174,7 +179,6 @@ extension ViewController: CBCentralManagerDelegate{
     ///
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        print("Called")
         let array_tmp = [String(describing: peripheral.name)]
         // let array_tmp = [String(describing: peripheral.identifier.uuid)] // デバイス名のない機器を検出
         
