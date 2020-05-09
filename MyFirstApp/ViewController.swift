@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         outputLabel.text = String(deviceArray.count)
         
         // グラフを表示
-        graphSetup(barChartView: chartView, data: weekCounts.reversed())
+        graphSetup(barChartView: chartView, rawData: weekCounts.reversed())
         
         // 10秒ごとに検出
         createTimer()
@@ -104,17 +104,44 @@ class ViewController: UIViewController {
         self.present(modal, animated: false, completion: nil)
     }
     
-    func graphSetup(barChartView: BarChartView, data: [Int]) {
-        let entries = data.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+    func graphSetup(barChartView: BarChartView, rawData: [Int]) {
+        print("グラフ")
+        let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
         let dataSet = BarChartDataSet(entries: entries)
         let data = BarChartData(dataSet: dataSet)
         
-        // 軸の線、グリッドを非表示
+        // X軸のラベルの位置を下に設定
+        barChartView.xAxis.labelPosition = .bottom
+        // X軸のラベルの色を設定
+        barChartView.xAxis.labelTextColor = .systemGray
+        // X軸の線、グリッドを非表示にする
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.xAxis.drawAxisLineEnabled = false
-        // Y座標軸は非表示
+        
+        // 右側のY座標軸は非表示にする
         barChartView.rightAxis.enabled = false
-        barChartView.leftAxis.enabled = false
+        // Y座標の値が0始まりになるように設定
+        barChartView.leftAxis.axisMinimum = 0.0
+        barChartView.leftAxis.drawZeroLineEnabled = true
+        barChartView.leftAxis.zeroLineColor = .systemGray
+        // ラベルの数を設定
+        barChartView.leftAxis.labelCount = 5
+        // ラベルの色を設定
+        barChartView.leftAxis.labelTextColor = .systemGray
+        // グリッドの色を設定
+        barChartView.leftAxis.gridColor = .systemGray
+        // 軸線は非表示にする
+        barChartView.leftAxis.drawAxisLineEnabled = false
+        
+        // 凡例を非表示
+        barChartView.legend.enabled = false
+        
+        // 平均の線を表示 let avg = rawData.reduce(0) { return $0 + $1 } / rawData.count
+        let avg = rawData.reduce(0) { return $0 + $1 } / rawData.count
+        let limitLine = ChartLimitLine(limit: Double(avg))
+        limitLine.lineColor = .systemOrange
+        limitLine.lineDashLengths = [4]
+        barChartView.leftAxis.addLimitLine(limitLine)
         
         barChartView.data = data
     }
@@ -150,8 +177,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func updateGraphBtn() {
-        getWeekData(dateFormater: self.dateFormater)
-        graphSetup(barChartView: self.chartView, data: self.weekCounts.reversed())
+        let weekCounts = getWeekData(dateFormater: self.dateFormater)
+        self.weekCounts = weekCounts
+        graphSetup(barChartView: self.chartView, rawData: weekCounts.reversed())
     }
 }
 
