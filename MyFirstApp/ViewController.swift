@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         }
         
         // 1週間の記録を取得
-        getWeekData(dateFormater: self.dateFormater)
+        self.weekCounts = getWeekData(dateFormater: self.dateFormater)
         
         // 検出数を表示
         outputLabel.text = String(deviceArray.count)
@@ -119,7 +119,9 @@ class ViewController: UIViewController {
         barChartView.data = data
     }
     
-    func getWeekData(dateFormater: DateFormatter) {
+    func getWeekData(dateFormater: DateFormatter) -> [Int] {
+        var weekCounts: [Int] = [0, 0, 0, 0, 0, 0, 0]
+        
         for i in 0...6 {
             let today = Date()
             let dayBeforeDate = Calendar.current.date(byAdding: .day, value: -i, to: today)!
@@ -127,11 +129,13 @@ class ViewController: UIViewController {
             
             if UserDefaults.standard.object(forKey: dayBeforeStr) != nil {
                 let array = UserDefaults.standard.object(forKey: dayBeforeStr) as! [String]
-                self.weekCounts[i] = array.count
+                weekCounts[i] = array.count
             } else {
-                self.weekCounts[i] = 0
+                weekCounts[i] = 0
             }
         }
+        
+        return weekCounts
     }
     
     // 1秒ごとに周辺のデバイスを検出
