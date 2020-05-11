@@ -31,11 +31,11 @@
                                 <rect key="frame" x="0.0" y="279" width="414" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8e-7M-0bo" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="67" y="50" width="280" height="357"/>
+                                        <rect key="frame" x="30" y="10" width="354" height="457"/>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-Ie-dGn">
-                                        <rect key="frame" x="168.5" y="427" width="77" height="30"/>
+                                        <rect key="frame" x="168.5" y="477" width="77" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="aMS-sf-JiR"/>
                                         </constraints>
@@ -47,12 +47,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="D8e-7M-0bo" firstAttribute="leading" secondItem="RAf-dP-F7c" secondAttribute="leading" constant="67" id="DA2-yP-d0x"/>
-                                    <constraint firstAttribute="bottom" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="210" id="Ygx-zU-0Cz"/>
-                                    <constraint firstItem="D8e-7M-0bo" firstAttribute="top" secondItem="RAf-dP-F7c" secondAttribute="top" constant="50" id="bnX-pS-Bdn"/>
-                                    <constraint firstItem="l6w-Ie-dGn" firstAttribute="top" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="20" id="c9X-1x-Bs2"/>
+                                    <constraint firstItem="D8e-7M-0bo" firstAttribute="leading" secondItem="RAf-dP-F7c" secondAttribute="leading" constant="30" id="DA2-yP-d0x"/>
+                                    <constraint firstAttribute="bottom" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="150" id="Ygx-zU-0Cz"/>
+                                    <constraint firstItem="D8e-7M-0bo" firstAttribute="top" secondItem="RAf-dP-F7c" secondAttribute="top" constant="10" id="bnX-pS-Bdn"/>
+                                    <constraint firstItem="l6w-Ie-dGn" firstAttribute="top" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="10" id="c9X-1x-Bs2"/>
                                     <constraint firstItem="l6w-Ie-dGn" firstAttribute="centerX" secondItem="RAf-dP-F7c" secondAttribute="centerX" id="clI-c7-QHd"/>
-                                    <constraint firstAttribute="trailing" secondItem="D8e-7M-0bo" secondAttribute="trailing" constant="67" id="dwv-J6-zMp"/>
+                                    <constraint firstAttribute="trailing" secondItem="D8e-7M-0bo" secondAttribute="trailing" constant="30" id="dwv-J6-zMp"/>
                                 </constraints>
                             </view>
                         </subviews>

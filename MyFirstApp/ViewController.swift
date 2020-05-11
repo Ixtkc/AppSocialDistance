@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        UserDefaults.standard.set(true, forKey: "firstLaunch")
+        // UserDefaults.standard.set(true, forKey: "firstLaunch")
         // 初回起動時の処理
         if (UserDefaults.standard.bool(forKey: "firstLaunch")) {
             openModal()
@@ -105,11 +105,14 @@ class ViewController: UIViewController {
     }
     
     func graphSetup(barChartView: BarChartView, rawData: [Int]) {
-        print("グラフ")
-        let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+        let entries = rawData.enumerated().map {
+            BarChartDataEntry(x: Double($0.offset), y: Double($0.element))
+        }
         let dataSet = BarChartDataSet(entries: entries)
         let data = BarChartData(dataSet: dataSet)
         
+        // X軸のラベルを設定
+        barChartView.xAxis.valueFormatter = BarChartFormatter()
         // X軸のラベルの位置を下に設定
         barChartView.xAxis.labelPosition = .bottom
         // X軸のラベルの色を設定
@@ -137,11 +140,11 @@ class ViewController: UIViewController {
         barChartView.legend.enabled = false
         
         // 平均の線を表示 let avg = rawData.reduce(0) { return $0 + $1 } / rawData.count
-        let avg = rawData.reduce(0) { return $0 + $1 } / rawData.count
-        let limitLine = ChartLimitLine(limit: Double(avg))
-        limitLine.lineColor = .systemOrange
-        limitLine.lineDashLengths = [4]
-        barChartView.leftAxis.addLimitLine(limitLine)
+//        let avg = rawData.reduce(0) { return $0 + $1 } / rawData.count
+//        let limitLine = ChartLimitLine(limit: Double(avg))
+//        limitLine.lineColor = .systemOrange
+//        limitLine.lineDashLengths = [4]
+//        barChartView.leftAxis.addLimitLine(limitLine)
         
         barChartView.data = data
     }
@@ -180,6 +183,13 @@ class ViewController: UIViewController {
         let weekCounts = getWeekData(dateFormater: self.dateFormater)
         self.weekCounts = weekCounts
         graphSetup(barChartView: self.chartView, rawData: weekCounts.reversed())
+    }
+}
+
+public class BarChartFormatter: NSObject, IAxisValueFormatter{
+    let labels = ["6日前", "5日前", "4日前", "3日前", "2日前", "昨日", "今日"]
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return labels[Int(value)]
     }
 }
 

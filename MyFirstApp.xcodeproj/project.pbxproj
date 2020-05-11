@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16B8658D2468FEF400DBF2F5 /* appicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B8658A2468FEF400DBF2F5 /* appicon.jpg */; };
 		16E13CED246592AD004BF22C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CE92465929C004BF22C /* Charts.framework */; };
 		16E13CEE246592AD004BF22C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CE92465929C004BF22C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16E13CF024659557004BF22C /* illust.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16E13CEF24659557004BF22C /* illust.jpg */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16B8658A2468FEF400DBF2F5 /* appicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appicon.jpg; sourceTree = "<group>"; };
 		16E13CE32465929C004BF22C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		16E13CEF24659557004BF22C /* illust.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = illust.jpg; sourceTree = "<group>"; };
 		16F2FB2C2463FC8700A7B770 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				E90ECF63244F0E73008FE0F1 /* LaunchScreen.storyboard */,
 				E90ECF66244F0E73008FE0F1 /* Info.plist */,
 				16E13CEF24659557004BF22C /* illust.jpg */,
+				16B8658A2468FEF400DBF2F5 /* appicon.jpg */,
 			);
 			path = MyFirstApp;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B8658D2468FEF400DBF2F5 /* appicon.jpg in Resources */,
 				E90ECF65244F0E73008FE0F1 /* LaunchScreen.storyboard in Resources */,
 				E90ECF62244F0E73008FE0F1 /* Assets.xcassets in Resources */,
 				16E13CF024659557004BF22C /* illust.jpg in Resources */,
