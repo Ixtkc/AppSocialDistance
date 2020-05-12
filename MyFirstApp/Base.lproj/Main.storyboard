@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetoothの接続を確認してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-Ew-lXY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-Ew-lXY">
                                 <rect key="frame" x="66" y="124" width="282" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="282" id="CMW-sA-YCg"/>
                                     <constraint firstAttribute="height" constant="120" id="LX9-5h-OKi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,11 +35,16 @@
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-Ie-dGn">
-                                        <rect key="frame" x="168.5" y="477" width="77" height="30"/>
+                                        <rect key="frame" x="117.5" y="472" width="179" height="60"/>
+                                        <color key="backgroundColor" red="0.38431372549019605" green="0.72941176470000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="aMS-sf-JiR"/>
+                                            <constraint firstAttribute="height" constant="60" id="aMS-sf-JiR"/>
                                         </constraints>
-                                        <state key="normal" title="グラフ更新"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="タップしてグラフを更新">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="updateGraphBtn" destination="BYZ-38-t0r" eventType="touchUpInside" id="N9G-2h-aRF"/>
                                         </connections>
@@ -50,17 +55,40 @@
                                     <constraint firstItem="D8e-7M-0bo" firstAttribute="leading" secondItem="RAf-dP-F7c" secondAttribute="leading" constant="30" id="DA2-yP-d0x"/>
                                     <constraint firstAttribute="bottom" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="150" id="Ygx-zU-0Cz"/>
                                     <constraint firstItem="D8e-7M-0bo" firstAttribute="top" secondItem="RAf-dP-F7c" secondAttribute="top" constant="10" id="bnX-pS-Bdn"/>
-                                    <constraint firstItem="l6w-Ie-dGn" firstAttribute="top" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="10" id="c9X-1x-Bs2"/>
+                                    <constraint firstItem="l6w-Ie-dGn" firstAttribute="top" secondItem="D8e-7M-0bo" secondAttribute="bottom" constant="5" id="c9X-1x-Bs2"/>
                                     <constraint firstItem="l6w-Ie-dGn" firstAttribute="centerX" secondItem="RAf-dP-F7c" secondAttribute="centerX" id="clI-c7-QHd"/>
                                     <constraint firstAttribute="trailing" secondItem="D8e-7M-0bo" secondAttribute="trailing" constant="30" id="dwv-J6-zMp"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日の接触者数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifJ-IV-kJs">
+                                <rect key="frame" x="144.5" y="133" width="125" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="bKQ-IS-ILA"/>
+                                    <constraint firstAttribute="width" constant="125" id="h3y-DJ-G5I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-RR-6wA">
+                                <rect key="frame" x="186" y="213" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="nWa-46-aCP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RAf-dP-F7c" firstAttribute="top" secondItem="8Oc-Ew-lXY" secondAttribute="bottom" constant="35" id="2Dh-TE-NgP"/>
                             <constraint firstItem="8Oc-Ew-lXY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="37g-wQ-7JA"/>
+                            <constraint firstItem="ifJ-IV-kJs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="DUj-gj-cT6"/>
+                            <constraint firstItem="Fc3-RR-6wA" firstAttribute="top" secondItem="ifJ-IV-kJs" secondAttribute="bottom" constant="60" id="FKf-4w-Otb"/>
+                            <constraint firstItem="Fc3-RR-6wA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YCL-l0-zRY"/>
                             <constraint firstItem="RAf-dP-F7c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZBC-Df-5qd"/>
+                            <constraint firstItem="ifJ-IV-kJs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hAW-KI-LqD"/>
                             <constraint firstItem="8Oc-Ew-lXY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ivK-IH-gzg"/>
                             <constraint firstItem="RAf-dP-F7c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v8j-wQ-h3D"/>
                             <constraint firstAttribute="bottom" secondItem="RAf-dP-F7c" secondAttribute="bottom" id="zKO-MH-AR4"/>
@@ -69,7 +97,9 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="D8e-7M-0bo" id="0i8-sG-uoD"/>
+                        <outlet property="dateLabel" destination="Fc3-RR-6wA" id="9Oi-Pd-dpM"/>
                         <outlet property="outputLabel" destination="8Oc-Ew-lXY" id="Eja-BT-yEw"/>
+                        <outlet property="reloadGraphBtn" destination="l6w-Ie-dGn" id="WZH-kB-5UF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

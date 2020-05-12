@@ -24,6 +24,8 @@ extension Array where Element: Hashable {
 
 class ViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet weak var reloadGraphBtn: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var chartView: BarChartView!
     
     var peripherals = [UUID : CBPeripheral]()
@@ -41,9 +43,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //角丸設定
+        self.reloadGraphBtn.layer.cornerRadius = 12
+        self.reloadGraphBtn.clipsToBounds = true
+        //影の設定
+        self.reloadGraphBtn.layer.shadowOpacity = 0.4
+        self.reloadGraphBtn.layer.shadowRadius = 12
+        self.reloadGraphBtn.layer.shadowColor = UIColor.black.cgColor
+        self.reloadGraphBtn.layer.shadowOffset = CGSize(width: 3, height: 3)
+        
+        //角丸設定
         self.outputLabel.layer.cornerRadius = 12
         self.outputLabel.clipsToBounds = true
-        
         //影の設定
         self.outputLabel.layer.shadowOpacity = 0.4
         self.outputLabel.layer.shadowRadius = 12
@@ -62,6 +72,7 @@ class ViewController: UIViewController {
         // 今日の日付を取得
         // userdefaultのキーに使う
         todayDate = dateFormater.string(from: Date())
+        dateLabel.text = todayDate
         
         // userdefaultから値を取得
         if UserDefaults.standard.object(forKey: todayDate) != nil {
@@ -72,7 +83,7 @@ class ViewController: UIViewController {
         self.weekCounts = getWeekData(dateFormater: self.dateFormater)
         
         // 検出数を表示
-        outputLabel.text = String(deviceArray.count)
+        outputLabel.text = String(deviceArray.count) + "人"
         
         // グラフを表示
         graphSetup(barChartView: chartView, rawData: weekCounts.reversed())
@@ -109,6 +120,8 @@ class ViewController: UIViewController {
             BarChartDataEntry(x: Double($0.offset), y: Double($0.element))
         }
         let dataSet = BarChartDataSet(entries: entries)
+        let color = UIColor(red: 98/255, green: 186/255, blue: 224/255, alpha: 1)
+        dataSet.colors = [color, color, color, color, color, color, color]
         let data = BarChartData(dataSet: dataSet)
         
         // X軸のラベルを設定
@@ -231,5 +244,3 @@ extension ViewController: CBCentralManagerDelegate{
         UserDefaults.standard.set(deviceArray, forKey: todayDate)
     }
 }
-
-
