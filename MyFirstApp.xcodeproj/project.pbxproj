@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165370702472CE2700E9A016 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1653706D2472CE1500E9A016 /* Charts.framework */; };
+		165370712472CE2700E9A016 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1653706D2472CE1500E9A016 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16B8658D2468FEF400DBF2F5 /* appicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B8658A2468FEF400DBF2F5 /* appicon.jpg */; };
-		16E13CED246592AD004BF22C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CE92465929C004BF22C /* Charts.framework */; };
-		16E13CEE246592AD004BF22C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16E13CE92465929C004BF22C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16E13CF024659557004BF22C /* illust.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16E13CEF24659557004BF22C /* illust.jpg */; };
 		16F2FB2D2463FC8700A7B770 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F2FB2C2463FC8700A7B770 /* ModalViewController.swift */; };
 		E90ECF59244F0E71008FE0F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90ECF58244F0E71008FE0F1 /* AppDelegate.swift */; };
@@ -21,16 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		16E13CE82465929C004BF22C /* PBXContainerItemProxy */ = {
+		1653706C2472CE1500E9A016 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 16E13CE32465929C004BF22C /* Charts.xcodeproj */;
+			containerPortal = 165370672472CE1400E9A016 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		16E13CEA2465929C004BF22C /* PBXContainerItemProxy */ = {
+		1653706E2472CE1500E9A016 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 16E13CE32465929C004BF22C /* Charts.xcodeproj */;
+			containerPortal = 165370672472CE1400E9A016 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
@@ -44,7 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				16E13CEE246592AD004BF22C /* Charts.framework in Embed Frameworks */,
+				165370712472CE2700E9A016 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,8 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		165370672472CE1400E9A016 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		16B8658A2468FEF400DBF2F5 /* appicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appicon.jpg; sourceTree = "<group>"; };
-		16E13CE32465929C004BF22C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		16E13CEF24659557004BF22C /* illust.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = illust.jpg; sourceTree = "<group>"; };
 		16F2FB2C2463FC8700A7B770 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E90ECF55244F0E71008FE0F1 /* MyFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,18 +71,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E13CED246592AD004BF22C /* Charts.framework in Frameworks */,
+				165370702472CE2700E9A016 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16E13CE42465929C004BF22C /* Products */ = {
+		165370682472CE1400E9A016 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				16E13CE92465929C004BF22C /* Charts.framework */,
-				16E13CEB2465929C004BF22C /* ChartsTests.xctest */,
+				1653706D2472CE1500E9A016 /* Charts.framework */,
+				1653706F2472CE1500E9A016 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 			children = (
 				E90ECF57244F0E71008FE0F1 /* MyFirstApp */,
 				E90ECF56244F0E71008FE0F1 /* Products */,
-				16E13CE32465929C004BF22C /* Charts.xcodeproj */,
+				165370672472CE1400E9A016 /* Charts.xcodeproj */,
 				16E13CEC246592AD004BF22C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -178,8 +178,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 16E13CE42465929C004BF22C /* Products */;
-					ProjectRef = 16E13CE32465929C004BF22C /* Charts.xcodeproj */;
+					ProductGroup = 165370682472CE1400E9A016 /* Products */;
+					ProjectRef = 165370672472CE1400E9A016 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -190,18 +190,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		16E13CE92465929C004BF22C /* Charts.framework */ = {
+		1653706D2472CE1500E9A016 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 16E13CE82465929C004BF22C /* PBXContainerItemProxy */;
+			remoteRef = 1653706C2472CE1500E9A016 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		16E13CEB2465929C004BF22C /* ChartsTests.xctest */ = {
+		1653706F2472CE1500E9A016 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 16E13CEA2465929C004BF22C /* PBXContainerItemProxy */;
+			remoteRef = 1653706E2472CE1500E9A016 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
