@@ -25,7 +25,7 @@
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>To know about surrounding environment</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>周辺の機器の検知のためbluetoothを使用します</string>
+	<string>Uses bluetooth to detect surrounding devices</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
