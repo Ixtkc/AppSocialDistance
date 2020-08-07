@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "0人"; ObjectID = "8Oc-Ew-lXY"; */
+"8Oc-Ew-lXY.text" = "0人";
+
+/* Class = "UIButton"; normalTitle = "Bluetoothを許可をしてはじめる"; ObjectID = "8oU-aI-4VQ"; */
+"8oU-aI-4VQ.normalTitle" = "Bluetoothを許可をしてはじめる";
+
+/* Class = "UILabel"; text = "このアプリは接触数を測り、ウイルスから大切な人を守るためのアプリです。"; ObjectID = "99U-qj-cNo"; */
+"99U-qj-cNo.text" = "このアプリは接触数を測り、ウイルスから大切な人を守るためのアプリです。";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fc3-RR-6wA"; */
+"Fc3-RR-6wA.text" = "Label";
+
+/* Class = "UILabel"; text = "今日の接触者数"; ObjectID = "ifJ-IV-kJs"; */
+"ifJ-IV-kJs.text" = "今日の接触者数";
+
+/* Class = "UIButton"; normalTitle = "タップしてグラフを更新"; ObjectID = "l6w-Ie-dGn"; */
+"l6w-Ie-dGn.normalTitle" = "タップしてグラフを更新";
